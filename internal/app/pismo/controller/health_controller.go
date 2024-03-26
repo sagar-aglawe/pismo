@@ -9,7 +9,11 @@ import (
 type HealthController struct {
 }
 
-func NewHealthController() *HealthController {
+type IHealthController interface {
+	HealthStatus(ctx *gin.Context)
+}
+
+func NewHealthController() IHealthController {
 	return &HealthController{}
 }
 

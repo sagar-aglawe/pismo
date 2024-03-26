@@ -9,3 +9,5 @@ type Transaction struct {
 	Amount          float64   `json:"amount"`
 	EventDate       time.Time `json:"event_date" gorm:"default:CURRENT_TIMESTAMP()"`
 }
+
+const TableTransaction = "transactions"

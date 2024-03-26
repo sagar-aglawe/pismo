@@ -19,14 +19,6 @@ func (baseRepo *BaseRepo) Create(model interface{}, tableMame string) error {
 	return nil
 }
 
-func (baseRepo *BaseRepo) Update(model interface{}, updateCondition map[string]interface{}) error {
-	if tx := baseRepo.DB.Model(model).Updates(updateCondition); tx.Error != nil {
-		return tx.Error
-	}
-
-	return nil
-}
-
 func (baseRepo *BaseRepo) First(searchModel interface{}, destinationModel interface{}) error {
 	if tx := baseRepo.DB.First(destinationModel, searchModel); tx.Error != nil {
 		return tx.Error

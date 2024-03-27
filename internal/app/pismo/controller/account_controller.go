@@ -33,18 +33,18 @@ func (ac *AccountController) CreateAccount(ctx *gin.Context) {
 	err := ctx.ShouldBindJSON(&reqBody)
 	if err != nil {
 		rCtx.Log.WithError(err).Error("error while validating create-account request")
-		response.FormatResponse(ctx, false, http.StatusBadRequest, err.Error())
+		response.FormatResponse(ctx, false, http.StatusBadRequest, "", err.Error())
 		return
 	}
 
 	resp, err := ac.accountService.CreateAccount(&rCtx, &reqBody)
 	if err != nil {
 		rCtx.Log.WithError(err).Error("error from create-account service")
-		response.FormatResponse(ctx, false, http.StatusBadRequest, err.Error())
+		response.FormatResponse(ctx, false, http.StatusBadRequest, "", err.Error())
 		return
 	}
 
-	response.FormatResponse(ctx, true, http.StatusOK, resp)
+	response.FormatResponse(ctx, true, http.StatusOK, resp, "")
 
 }
 
@@ -54,17 +54,17 @@ func (ac *AccountController) GetAccount(ctx *gin.Context) {
 	accountId, err := strconv.Atoi(sAccountId)
 	if err != nil {
 		rCtx.Log.WithError(err).Error("error while converting account id to int")
-		response.FormatResponse(ctx, false, http.StatusBadRequest, err.Error())
+		response.FormatResponse(ctx, false, http.StatusBadRequest, "", err.Error())
 		return
 	}
 
 	resp, err := ac.accountService.GetAccount(&rCtx, accountId)
 	if err != nil {
 		rCtx.Log.WithError(err).Error("error while fetching account information")
-		response.FormatResponse(ctx, false, http.StatusBadRequest, err.Error())
+		response.FormatResponse(ctx, false, http.StatusBadRequest, "", err.Error())
 		return
 	}
 
-	response.FormatResponse(ctx, true, http.StatusOK, resp)
+	response.FormatResponse(ctx, true, http.StatusOK, resp, "")
 
 }

@@ -19,7 +19,7 @@ import (
 	"github.com/stretchr/testify/mock"
 )
 
-func TestCreateTransaction(t *testing.T) {
+func TestControllerCreateTransaction(t *testing.T) {
 	log := logger.GetLogger()
 
 	type testCase struct {

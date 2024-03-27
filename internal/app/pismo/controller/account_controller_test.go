@@ -26,7 +26,7 @@ type ControllerResponse struct {
 	Success      bool        `json:"success"`
 }
 
-func TestCreateAccount(t *testing.T) {
+func TestControllerCreateAccount(t *testing.T) {
 	log := logger.GetLogger()
 
 	type testCase struct {
@@ -143,7 +143,7 @@ func TestCreateAccount(t *testing.T) {
 	}
 }
 
-func TestGetAccount(t *testing.T) {
+func TestControllerGetAccount(t *testing.T) {
 	log := logger.GetLogger()
 
 	type testCase struct {

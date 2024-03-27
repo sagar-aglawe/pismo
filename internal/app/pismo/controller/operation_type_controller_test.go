@@ -19,7 +19,7 @@ import (
 	"github.com/stretchr/testify/mock"
 )
 
-func TestCreateOperationType(t *testing.T) {
+func TestControllerCreateOperationType(t *testing.T) {
 	log := logger.GetLogger()
 
 	type testCase struct {

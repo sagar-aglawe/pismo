@@ -85,6 +85,20 @@ paths:
       summary: Get Account
       tags:
       - Accounts
+  /health:
+    get:
+      description: Get the health of the application
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get Health
+      tags:
+      - Health
   /operations:
     post:
       description: Create different operation types for the given input

@@ -15,6 +15,7 @@ services:
       - POSTGRES_PORT=5432
     volumes:
       - postgresvolume:/var/lib/postgresql/data
+      - ./scripts/init.sql:/docker-entrypoint-initdb.d/init.sql
 
   pismo_service:
     container_name: pismo_service

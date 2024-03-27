@@ -1,7 +1,7 @@
 package dto
 
 type AccountCreateRequest struct {
-	DocumentNumber string `json:"document_number" binding:"reuired"`
+	DocumentNumber string `json:"document_number" binding:"required"`
 }
 
 type AccountCreateResponse struct {

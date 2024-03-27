@@ -50,7 +50,7 @@ func (ac *AccountController) CreateAccount(ctx *gin.Context) {
 
 func (ac *AccountController) GetAccount(ctx *gin.Context) {
 	rCtx := request_context.GetRCtx(ctx)
-	sAccountId := ctx.Query("account_id")
+	sAccountId := ctx.Param("account_id")
 	accountId, err := strconv.Atoi(sAccountId)
 	if err != nil {
 		rCtx.Log.WithError(err).Error("error while converting account id to int")

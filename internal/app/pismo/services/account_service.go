@@ -29,7 +29,7 @@ func (as *AccountService) CreateAccount(
 		DocumentNumber: reqBody.DocumentNumber,
 	}
 
-	err := as.accountRepo.Create(&accountModel, model.TableTransaction)
+	err := as.accountRepo.Create(&accountModel, model.TableAccount)
 	if err != nil {
 		return nil, err
 	}

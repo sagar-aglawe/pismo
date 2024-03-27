@@ -8,7 +8,7 @@ import (
 )
 
 type AccountService struct {
-	accountRepo *repository.AccountRepo
+	accountRepo repository.IAccountRepo
 }
 
 type IAccountService interface {
@@ -16,7 +16,7 @@ type IAccountService interface {
 	GetAccount(rCtx *request_context.ReqCtx, accountId int) (*dto.AccountGetResponse, error)
 }
 
-func NewAccountService(accountRepo *repository.AccountRepo) IAccountService {
+func NewAccountService(accountRepo repository.IAccountRepo) IAccountService {
 	return &AccountService{
 		accountRepo: accountRepo,
 	}

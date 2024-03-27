@@ -10,6 +10,7 @@ func RegisterRoutes(routerGroup *gin.RouterGroup) *gin.RouterGroup {
 	healthCheckRoutes(v1, &contaier)
 	AccountRoutes(v1, &contaier)
 	TransactionRoutes(v1, &contaier)
+	OperationTypeRoutes(v1, &contaier)
 
 	return v1
 
@@ -26,4 +27,8 @@ func TransactionRoutes(routerGroup *gin.RouterGroup, container *Container) {
 func AccountRoutes(routerGroup *gin.RouterGroup, container *Container) {
 	routerGroup.POST("/accounts", container.accountController.CreateAccount)
 	routerGroup.GET("/accounts/:account_id", container.accountController.GetAccount)
+}
+
+func OperationTypeRoutes(routerGroup *gin.RouterGroup, container *Container) {
+	routerGroup.POST("/operations", container.operationTypeController.CreateOperationType)
 }

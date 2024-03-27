@@ -4,6 +4,11 @@ type OperationTypeRepo struct {
 	*BaseRepo
 }
 
-func NewOperationTypeRepo(baseRepo *BaseRepo) *OperationTypeRepo {
+type IOperationTypeRepo interface {
+	Create(model interface{}, tableMame string) error
+	First(searchModel interface{}, destinationModel interface{}) error
+}
+
+func NewOperationTypeRepo(baseRepo *BaseRepo) IOperationTypeRepo {
 	return &OperationTypeRepo{baseRepo}
 }

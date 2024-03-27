@@ -4,6 +4,11 @@ type AccountRepo struct {
 	*BaseRepo
 }
 
-func NewAccountRepo(baseRepo *BaseRepo) *AccountRepo {
+type IAccountRepo interface {
+	Create(model interface{}, tableMame string) error
+	First(searchModel interface{}, destinationModel interface{}) error
+}
+
+func NewAccountRepo(baseRepo *BaseRepo) IAccountRepo {
 	return &AccountRepo{baseRepo}
 }

@@ -8,9 +8,10 @@ import (
 )
 
 type Container struct {
-	healthController      controller.IHealthController
-	accountController     controller.IAccountController
-	transactionController controller.ITransactionController
+	healthController        controller.IHealthController
+	accountController       controller.IAccountController
+	transactionController   controller.ITransactionController
+	operationTypeController controller.IOperationTypeController
 }
 
 func NewContainer() Container {
@@ -23,17 +24,21 @@ func NewContainer() Container {
 
 	transactionRepo := repository.NewTransactionRepo(baseRepo)
 	accountsRepo := repository.NewAccountRepo(baseRepo)
+	operationTypeRepo := repository.NewOperationTypeRepo(baseRepo)
 
-	transactionService := services.NewTransactionService(transactionRepo)
+	transactionService := services.NewTransactionService(transactionRepo, accountsRepo, operationTypeRepo)
 	accountService := services.NewAccountService(accountsRepo)
+	operationTypeService := services.NewOperationTypeService(operationTypeRepo)
 
 	healthController := controller.NewHealthController()
 	transactionController := controller.NewTransactionController(transactionService)
 	accountController := controller.NewAccountController(accountService)
+	operationTypeController := controller.NewOperationTypeController(operationTypeService)
 
 	return Container{
-		healthController:      healthController,
-		transactionController: transactionController,
-		accountController:     accountController,
+		healthController:        healthController,
+		transactionController:   transactionController,
+		accountController:       accountController,
+		operationTypeController: operationTypeController,
 	}
 }

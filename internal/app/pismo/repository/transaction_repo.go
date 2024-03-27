@@ -6,7 +6,6 @@ type TransctionRepo struct {
 
 type ITransactionRepo interface {
 	Create(model interface{}, tableMame string) error
-	First(searchModel interface{}, destinationModel interface{}) error
 }
 
 func NewTransactionRepo(baseRepo *BaseRepo) ITransactionRepo {

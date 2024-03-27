@@ -22,3 +22,11 @@ type TransactionCreateRequest struct {
 type TransactionCreateResponse struct {
 	TransactionId int `json:"transaction_id"`
 }
+
+type OperationTypeCreateRequest struct {
+	Description string `json:"description" binding:"required"`
+}
+
+type OperationTypeCreateResponse struct {
+	OperationTypeId int `json:"operation_type_id"`
+}

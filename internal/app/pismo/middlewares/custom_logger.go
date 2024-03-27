@@ -1,6 +1,7 @@
 package middlewares
 
 import (
+	"self-projects/pismo/internal/app/pismo/constants"
 	"self-projects/pismo/pkg/logger"
 
 	"github.com/gin-gonic/gin"
@@ -11,14 +12,14 @@ func CustomLogger() gin.HandlerFunc {
 	return func(ctx *gin.Context) {
 		var requestId interface{}
 
-		if requestId = ctx.Value("x-request-id"); requestId == nil || requestId == "" {
+		if requestId = ctx.Value(constants.LoggerRequestId); requestId == nil || requestId == "" {
 			requestId = uuid.New().String()
 		}
 
 		logFields := map[string]interface{}{
-			"request-method": ctx.Request.Method,
-			"request-path":   ctx.Request.URL.Path,
-			"x-request-id":   requestId,
+			constants.LoggerRequestMethod: ctx.Request.Method,
+			constants.LoggerRequestPath:   ctx.Request.URL.Path,
+			constants.LoggerRequestId:     requestId,
 		}
 
 		log := logger.GetLogger()

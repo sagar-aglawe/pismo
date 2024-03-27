@@ -30,6 +30,6 @@
 
 ## running swagger for new changes 
 1. make sure you have swagger install , run command `swag -h` to validate the same 
-2. if swagger is not install then you can follow link [swagger-intall](https://lemoncode21.medium.com/how-to-add-swagger-in-golang-gin-6932e8076ec0)
+2. if swagger is not install then you can follow link [swagger-install](https://lemoncode21.medium.com/how-to-add-swagger-in-golang-gin-6932e8076ec0)
 3. Once you make the annotation changes , to reflect in doc run command `make generate-docs`
 4. the swagger dashboard will be available at link : http://0.0.0.0:8080/docs/index.html once the server is started

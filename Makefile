@@ -13,3 +13,6 @@ generate-mocks:
 	make service-mocks
 	# repository mocks
 	make repository-mocks
+
+tests:
+	go test -v ./...

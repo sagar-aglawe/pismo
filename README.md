@@ -22,3 +22,6 @@
 ## steps to run test cases 
 1. first generate the mocks , for this run command : `make generate-mocks` in root directory 
 2. run the command `make tests` to run the test case
+
+# postman collection 
+1. Please check the `scripts/postman_collection.json` , which has the collection for apis

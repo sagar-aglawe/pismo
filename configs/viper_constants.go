@@ -7,3 +7,8 @@ const (
 	PostgresPassword = "database.postgres.source.password"
 	PostgresDbName   = "database.postgres.source.db_name"
 )
+
+const (
+	LoggingFormat = "logging.format"
+	LoggingLevel  = "logging.level"
+)

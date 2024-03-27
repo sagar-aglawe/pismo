@@ -6,3 +6,7 @@ database:
       user: $POSTGRES_USER
       password: $POSTGRES_PASSWORD
       db_name: $POSTGRES_DB
+
+logging:
+  format: "json"
+  level: "info"

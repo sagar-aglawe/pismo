@@ -4,10 +4,14 @@ import (
 	"fmt"
 	"self-projects/pismo/api/rest"
 	"self-projects/pismo/configs"
+	"self-projects/pismo/pkg/logger"
+
+	"github.com/spf13/viper"
 )
 
 func init() {
 	configs.ReadConfig()
+	logger.InitLogger(viper.GetString(configs.LoggingFormat), viper.GetString(configs.LoggingLevel))
 }
 
 func main() {

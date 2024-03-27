@@ -22,6 +22,15 @@ func NewTransactionController(transactionService services.ITransactionService) I
 	return &TransactionController{transactionService: transactionService}
 }
 
+// CreateTransaction 	godoc
+// @Summary 			Create Transactions
+// @Description 		Create transactions for the given input
+// @param 				request body dto.TransactionCreateRequest true "Create Transactions"
+// @Produce 			application/json
+// @Tags 				Transactions
+// @Success 			200 {object} map[string]interface{}
+// @Failure 			400 {object} map[string]interface{}
+// @Router 				/transactions [post]
 func (tc *TransactionController) CreateTransaction(ctx *gin.Context) {
 	rCtx := request_context.GetRCtx(ctx)
 

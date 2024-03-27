@@ -1,0 +1,140 @@
+basePath: /pismo/api/v1
+definitions:
+  dto.AccountCreateRequest:
+    properties:
+      document_number:
+        type: string
+    required:
+    - document_number
+    type: object
+  dto.OperationTypeCreateRequest:
+    properties:
+      description:
+        type: string
+    required:
+    - description
+    type: object
+  dto.TransactionCreateRequest:
+    properties:
+      account_id:
+        type: integer
+      amount:
+        type: number
+      operation_type_id:
+        type: integer
+    required:
+    - account_id
+    - amount
+    - operation_type_id
+    type: object
+host: 0.0.0.0:8080
+info:
+  contact: {}
+  description: Pismo service API with Golang
+  title: Pismo Service API
+  version: "1.0"
+paths:
+  /accounts:
+    post:
+      description: Create the acocunt for the given input
+      parameters:
+      - description: Create Account
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.AccountCreateRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Create Account
+      tags:
+      - Accounts
+  /accounts/{account_id}:
+    get:
+      description: Get the acocunt for the given input
+      parameters:
+      - description: Get Account
+        in: path
+        name: account_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get Account
+      tags:
+      - Accounts
+  /operations:
+    post:
+      description: Create different operation types for the given input
+      parameters:
+      - description: Create Operation Type
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.OperationTypeCreateRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Create Operation Type
+      tags:
+      - Operation Types
+  /transactions:
+    post:
+      description: Create transactions for the given input
+      parameters:
+      - description: Create Transactions
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.TransactionCreateRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Create Transactions
+      tags:
+      - Transactions
+swagger: "2.0"

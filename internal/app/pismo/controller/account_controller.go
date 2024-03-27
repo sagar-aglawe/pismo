@@ -25,6 +25,15 @@ func NewAccountController(accountService services.IAccountService) IAccountContr
 	return &AccountController{accountService: accountService}
 }
 
+// CreateAccount 	godoc
+// @Summary 		Create Account
+// @Description 	Create the acocunt for the given input
+// @param 			request body dto.AccountCreateRequest true "Create Account"
+// @Produce 		application/json
+// @Tags 			Accounts
+// @Success 		200 {object} map[string]interface{}
+// @Failure 		400 {object} map[string]interface{}
+// @Router 			/accounts [post]
 func (ac *AccountController) CreateAccount(ctx *gin.Context) {
 	rCtx := request_context.GetRCtx(ctx)
 
@@ -48,6 +57,15 @@ func (ac *AccountController) CreateAccount(ctx *gin.Context) {
 
 }
 
+// GetAccount 	    godoc
+// @Summary 		Get Account
+// @Description 	Get the acocunt for the given input
+// @param 			account_id path int true "Get Account"
+// @Produce 		application/json
+// @Tags 			Accounts
+// @Success 		200 {object} map[string]interface{}
+// @Failure 		400 {object} map[string]interface{}
+// @Router 			/accounts/{account_id} [get]
 func (ac *AccountController) GetAccount(ctx *gin.Context) {
 	rCtx := request_context.GetRCtx(ctx)
 	sAccountId := ctx.Param("account_id")

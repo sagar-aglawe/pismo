@@ -1,6 +1,8 @@
 package rest
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/gin-gonic/gin"
+)
 
 func RegisterRoutes(routerGroup *gin.RouterGroup) *gin.RouterGroup {
 	contaier := NewContainer()
@@ -11,7 +13,6 @@ func RegisterRoutes(routerGroup *gin.RouterGroup) *gin.RouterGroup {
 	AccountRoutes(v1, &contaier)
 	TransactionRoutes(v1, &contaier)
 	OperationTypeRoutes(v1, &contaier)
-
 	return v1
 
 }

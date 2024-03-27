@@ -1,0 +1,210 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Pismo service API with Golang",
+        "title": "Pismo Service API",
+        "contact": {},
+        "version": "1.0"
+    },
+    "host": "0.0.0.0:8080",
+    "basePath": "/pismo/api/v1",
+    "paths": {
+        "/accounts": {
+            "post": {
+                "description": "Create the acocunt for the given input",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Accounts"
+                ],
+                "summary": "Create Account",
+                "parameters": [
+                    {
+                        "description": "Create Account",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.AccountCreateRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    }
+                }
+            }
+        },
+        "/accounts/{account_id}": {
+            "get": {
+                "description": "Get the acocunt for the given input",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Accounts"
+                ],
+                "summary": "Get Account",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Get Account",
+                        "name": "account_id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    }
+                }
+            }
+        },
+        "/operations": {
+            "post": {
+                "description": "Create different operation types for the given input",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Operation Types"
+                ],
+                "summary": "Create Operation Type",
+                "parameters": [
+                    {
+                        "description": "Create Operation Type",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.OperationTypeCreateRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    }
+                }
+            }
+        },
+        "/transactions": {
+            "post": {
+                "description": "Create transactions for the given input",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Transactions"
+                ],
+                "summary": "Create Transactions",
+                "parameters": [
+                    {
+                        "description": "Create Transactions",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.TransactionCreateRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "dto.AccountCreateRequest": {
+            "type": "object",
+            "required": [
+                "document_number"
+            ],
+            "properties": {
+                "document_number": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.OperationTypeCreateRequest": {
+            "type": "object",
+            "required": [
+                "description"
+            ],
+            "properties": {
+                "description": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.TransactionCreateRequest": {
+            "type": "object",
+            "required": [
+                "account_id",
+                "amount",
+                "operation_type_id"
+            ],
+            "properties": {
+                "account_id": {
+                    "type": "integer"
+                },
+                "amount": {
+                    "type": "number"
+                },
+                "operation_type_id": {
+                    "type": "integer"
+                }
+            }
+        }
+    }
+}

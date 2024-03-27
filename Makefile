@@ -16,3 +16,12 @@ generate-mocks:
 
 tests:
 	go test -v ./...
+
+generate-doc:
+	swag init -d ./cmd/pismo,./
+
+build-app:
+	docker-compose build
+
+run-app: 
+	docker-compose up

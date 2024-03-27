@@ -22,6 +22,15 @@ func NewOperationTypeController(operationTypeService services.IOperationTypeServ
 	return &OperationTypeController{opertaionTypeService: operationTypeService}
 }
 
+// CreateOperationType 	godoc
+// @Summary 			Create Operation Type
+// @Description 		Create different operation types for the given input
+// @param 				request body dto.OperationTypeCreateRequest true "Create Operation Type"
+// @Produce 			application/json
+// @Tags 				Operation Types
+// @Success 			200 {object} map[string]interface{}
+// @Failure 			400 {object} map[string]interface{}
+// @Router 				/operations [post]
 func (oc *OperationTypeController) CreateOperationType(ctx *gin.Context) {
 	rCtx := request_context.GetRCtx(ctx)
 

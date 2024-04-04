@@ -2,10 +2,13 @@ package postgres
 
 import (
 	"fmt"
+	"log"
+	"os"
 
 	"gorm.io/driver/postgres"
 
 	"gorm.io/gorm"
+	"gorm.io/gorm/logger"
 	"gorm.io/gorm/schema"
 )
 
@@ -26,6 +29,16 @@ func New(c *Config) *gorm.DB {
 		c.Port,
 	)
 
+	newLogger := logger.New(
+		log.New(os.Stdout, "\r\n", log.LstdFlags), // io writer
+		logger.Config{
+			LogLevel:                  logger.Info, // Log level
+			IgnoreRecordNotFoundError: true,        // Ignore ErrRecordNotFound error for logger
+			ParameterizedQueries:      true,        // Don't include params in the SQL log
+			Colorful:                  false,       // Disable color
+		},
+	)
+
 	postgresDb, err := gorm.Open(
 
 		postgres.New(
@@ -36,6 +49,7 @@ func New(c *Config) *gorm.DB {
 			NamingStrategy: schema.NamingStrategy{
 				SingularTable: false,
 			},
+			Logger: newLogger,
 		},
 	)
 

@@ -26,3 +26,10 @@ func (baseRepo *BaseRepo) First(searchModel interface{}, destinationModel interf
 
 	return nil
 }
+
+func (baseRepo *BaseRepo) Update(model interface{}) error {
+	if tx := baseRepo.DB.Model(model).Updates(model); tx.Error != nil {
+		return tx.Error
+	}
+	return nil
+}

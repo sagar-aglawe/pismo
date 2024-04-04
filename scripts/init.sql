@@ -20,5 +20,6 @@ CREATE TABLE transactions(
     account_id SERIAL,
     operation_type_id SERIAL,
     amount NUMERIC,
+    balance NUMERIC,
     event_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );

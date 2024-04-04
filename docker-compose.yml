@@ -17,6 +17,13 @@ services:
       - postgresvolume:/var/lib/postgresql/data
       - ./scripts/init.sql:/docker-entrypoint-initdb.d/init.sql
 
+  redis:
+    container_name: redis
+    image: redis
+    restart: always
+    ports:
+      - "6379:6379"
+
   pismo_service:
     container_name: pismo_service
     build: 
@@ -34,6 +41,7 @@ services:
       - DATABASE_POSTGRES_SOURCE_HOST=postgres
     depends_on:
       - postgres
+      - redis
 
 volumes:
   postgresvolume:
